@@ -1,0 +1,23 @@
+<h4>Leave a comment</h4>
+<%= form_with model: [ @company, @company.comments.build ] do |form| %>
+  <p>
+    <br>
+  </p>
+  <p>
+  
+  <%if user_signed_in?%>
+
+    <%= form.label :title %><br>
+    <%= form.hidden_field :title, value: current_user.email %>
+  </p>
+  <p>
+<%end%>
+  <p>
+  <%= form.label :Comment %><br>
+  <%= form.text_area :comment %>
+</p>
+    <%= form.submit %>
+  
+ 
+
+<%end%>

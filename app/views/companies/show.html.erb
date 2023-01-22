@@ -1,0 +1,13 @@
+<h1><%= @company.name %></h1>
+<p><%= @company.address %></p>
+<ul>
+  <li><%= link_to "Edit", edit_company_path(@company) %></li>
+  <li><%= link_to "Destroy", company_path(@company), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+<h3>Comments</h3>
+  <%= render @company.comments %>
+
+  <%= render 'comments/form' %>
