@@ -20,12 +20,17 @@
   <div>
   <%= form.label :No_of_employees %><br>
   <%= form.text_field :no_of_employee %>
-  <% @company.errors.full_messages_for(:No_of_employees).each do |message| %>
+  <% @company.errors.full_messages_for(:no_of_employees).each do |message| %>
     <div><%= message %></div>
   <% end %>
 </div>
+
+
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+
+

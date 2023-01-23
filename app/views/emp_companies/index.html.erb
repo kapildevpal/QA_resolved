@@ -1,0 +1,17 @@
+<h1>EmpCompanies#index</h1>
+<p>Find me in app/views/emp_companies/index.html.erb</p>
+
+<ul>
+
+ <% @companies.each do |comp| %>
+    <li>
+    <%if current_user.company_name == comp.name%>   
+      <%= link_to comp.name, comp %>
+      <%= link_to comp.address, comp %>
+      
+    <%end%>
+    </li>
+   
+
+  <%end%>
+
