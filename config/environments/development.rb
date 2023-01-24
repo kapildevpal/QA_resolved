@@ -63,6 +63,34 @@ Rails.application.configure do
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
+
+  # config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i'
+  # # }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_options = {from: 'kdpal@bestpeers.com'}
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :letter_opener
+  
+
+
+
+
+
+
+# config.action_mailer.smtp_settings = {
+# address:              'smtp.gmail.com',
+# port:                 587,
+# domain:               'example.com',
+# user_name:            'kdpal',
+# password:             'S',
+# authentication:       'plain',
+# enable_starttls_auto: true  }
+
+
   # Annotate rendered view with file names.
     # config.action_view.annotate_rendered_view_with_filenames = true
 

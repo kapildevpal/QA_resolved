@@ -5,20 +5,22 @@ class CompaniesController < ApplicationController
     @companies = Company.all
   end
 
-
   def show
     @company = Company.find(params[:id])
   end
-  
+
   def new
     @company = Company.new
   end
 
   def create
+
     @company = Company.new(company_params)
+
     @company.user = current_user
       if @company.save
-
+        @user = @company.user
+        UserMailer.welcome_email(@user).deliver_now
         redirect_to @company
       else
         render :new
@@ -49,6 +51,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :address, :no_of_employee)
+    params.require(:company).permit(:name, :address, :no_of_employee, :image)
   end
 end

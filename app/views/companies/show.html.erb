@@ -1,8 +1,18 @@
-<h1><%= @company.name %></h1>
-<p><%= @company.address %></p>
-<ul>
+
+<div class="col"><%=image_tag(@company.image, style: 'width:10%')%>
+
+  <div class="card-body">
+    <h5 class="card-title"><%= @company.name %></h5>
+      <p class="card-text"></p>
+      <a href="#" class="btn btn-primary"><%= @company.address %></a>
+    
+
  <%if current_user.role == "admin"%>
+ <%=link_to 'Create New Company', new_company_path %>
  
+ 
+    
+
   <li><%= link_to "Update", edit_company_path(@company) %></li>
   <li><%= link_to "Destroy", company_path(@company), data: {
                     turbo_method: :delete,
@@ -10,7 +20,15 @@
                   } %></li>
 </ul>
 <%end%>
-<h3>Comments</h3>
-  <%= render @company.comments %>
+<h5>Comments</h5>
+
+<% if @company.comments.count > 5%>
+      <%= render @company.comments.last(3) %>
+    <%else%>
+       <%= render @company.comments.all %>
+ <%end%>
+
+    
 
   <%= render 'comments/form' %>
+      
