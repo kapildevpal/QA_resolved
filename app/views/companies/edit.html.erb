@@ -1,4 +1,8 @@
-
+<div class="d-flex align-items-center justify-content-center" style="height: 90vh">
+  <div class="card" style="width: 20rem;" >
+    <div class="card border-dark shadow-sm">
+     <div class="card-body">
+     <h2 class="card-title">Update </h2>
 <%= form_with model: @company do |form| %>
   <div>
     <%= form.label :name %><br>
@@ -24,7 +28,19 @@
     <div><%= message %></div>
   <% end %>
 </div>
+
+
+<div>
+  <%= form.label :image %><br>
+      <%= form.file_field :image, class: "col-auto", required: true %><br>
+  </div>
+  
   <div>
     <%= form.submit %>
   </div>
+ 
 <% end %>
+       </div>
+     </div>
+   </div>
+ </div>  

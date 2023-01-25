@@ -1,5 +1,8 @@
-<div class=" text-center">
-<h2>Sign up</h2>
+<div class="d-flex align-items-center justify-content-center" style="height: 50vh">
+  <div class="card" style="width: 20rem;" >
+    <div class="card border-dark shadow-sm">
+     <div class="card-body">
+     <h2 class="card-title">Sign up </h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -39,3 +42,7 @@
 
 <%= render "devise/shared/links" %>
 </div>
+      </div>
+     </div>
+   </div>
+ </div>  

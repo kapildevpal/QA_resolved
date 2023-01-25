@@ -1,16 +1,9 @@
 <div class="container text-center">
-   
-
 <h1>Companies<br>
-
- 
 <%if user_signed_in? %>
   <%=link_to 'Sign_out', destroy_user_session_path %>
- 
-  <hr/>
-        
-               
-    
+  
+  <hr/>            
   <% @companies.each do |company| %>
   
           <br> 
@@ -22,15 +15,12 @@
   <%end%>
              
 <%else%>
-
   <%=link_to 'Sign_in' , new_user_session_path %>
 
   <%=link_to 'Sign_up', new_user_registration_path %></h1>
 <%end%>
 <h2>
   
-
-<%=link_to 'Create New Company', new_company_path %>
 </div>  
 
 

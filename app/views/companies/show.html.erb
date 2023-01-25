@@ -1,34 +1,69 @@
+ <hr/>
+<%if current_user.role == "admin"%>
 
-<div class="col"><%=image_tag(@company.image, style: 'width:10%')%>
+ <%=link_to 'Create New Company', new_company_path %><br>
 
-  <div class="card-body">
-    <h5 class="card-title"><%= @company.name %></h5>
-      <p class="card-text"></p>
-      <a href="#" class="btn btn-primary"><%= @company.address %></a>
-    
+<%end%>
 
- <%if current_user.role == "admin"%>
- <%=link_to 'Create New Company', new_company_path %>
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <%=image_tag(@company.image, style: 'width:50%')%><br>
+           <%= @company.name %>
+          <%= @company.address %>  
+
+           <%if current_user.role == "admin"%>
+    <hr/>
  
- 
-    
 
-  <li><%= link_to "Update", edit_company_path(@company) %></li>
-  <li><%= link_to "Destroy", company_path(@company), data: {
+  <%= link_to "Update", edit_company_path(@company) %> <br>
+  <%= link_to "Destroy", company_path(@company), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
-<%end%>
-<h5>Comments</h5>
+                  } %> 
+ 
+          <%end%>
+          
+    </div>
+    <div class="col">
+            <h5>Comments</h5>
 
-<% if @company.comments.count > 5%>
-      <%= render @company.comments.last(3) %>
-    <%else%>
-       <%= render @company.comments.all %>
- <%end%>
+             <%= render 'comments/form' %>
 
-    
 
-  <%= render 'comments/form' %>
-      
+          <%# Comment load more %>
+
+          <script type="text/javascript">
+          function showDiv(toggle){
+          document.getElementById(toggle).style.display = 'block';
+          }
+          </script>
+
+          <% if @company.comments.count > 4%>
+                <%= render @company.comments.last(3) %>
+          <%end%>
+              <%# Comments %>
+                <button onclick="myFunction()">see all comments</button>
+                
+
+                <script>
+                function myFunction() {
+                  var x = document.getElementById("myDIV");
+                  if (x.style.display === "none") {
+                    x.style.display = "block";
+                  } else {
+                    x.style.display = "none";
+                  }
+                }
+                </script>
+                <div id="myDIV">
+                <%= render @company.comments.all %>
+                </div>
+                
+    </div>
+  </div>
+</div>
+
+
+
+

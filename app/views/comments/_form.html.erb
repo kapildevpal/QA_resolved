@@ -4,7 +4,12 @@
   <%if user_signed_in?%>
     <%= form.hidden_field :title, value: current_user.email %>
 <%end%> 
-  <%= form.label :Comment %><br>
+<%# <%= form.label :rating %>
+  <%# <%= form.text_field:rating ,required: true%>  
+
+  <br>
+
+  <%= form.label :Comment %>
   <%= form.text_area :comment %>
     <%= form.submit %>
 <%end%>

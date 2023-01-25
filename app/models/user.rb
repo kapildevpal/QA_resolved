@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :role,:company_name, presence: true
+  
 end
+

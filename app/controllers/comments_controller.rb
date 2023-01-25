@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
 
-  def index
+  def show
     @comments = Comment.all
   end
 
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:title, :comment)
+    params.require(:comment).permit(:title, :comment, :rating)
   end
 end
  
