@@ -3,14 +3,16 @@
  
   <%if user_signed_in?%>
     <%= form.hidden_field :title, value: current_user.email %>
-<%end%> 
-<%# <%= form.label :rating %>
-  <%# <%= form.text_field:rating ,required: true%>  
+  <%end%> 
+<ul> 
 
-  <br>
+<%= form.text_field :rating, required: true,:size => 1, :min => 0, :max => 5, :step => 1 %>
+<div class="rateit" data-rateit-backingfld="#item_ratings" data-rateit-resetable="true">
+</div>
 
-  <%= form.label :Comment %>
-  <%= form.text_area :comment %>
-    <%= form.submit %>
-<%end%>
+
+  <ul> <%= form.label :Comment %></ul> 
+   <ul><%= form.text_area :comment %>  <%= form.submit %></ul>
+    
+<%end%><br>
 </div>

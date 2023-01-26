@@ -1,22 +1,20 @@
 <div><p><span>
+ 
+
+<%new=Comment.all.where(company_id:comment.company_id)%>
+<%all_ratings=new.pluck(:rating)%>
+<%=all_ratings.compact.sum/all_ratings.size%>
+
+
     Commenter Email:
     <%= comment.title %>
   </span>
 </p>
   <span>
-
+      Comment
     <%= comment.comment%>
   </span>
 
 
- <%=comment.company_id%>
-
-
- <%new=Comment.all.where(company_id:comment.company_id)%>
-<%all_ratings=new.pluck(:rating)%>
-<%=all_ratings.compact.sum/all_ratings.size%>
-
-
   </div>
- 
- 
+  
