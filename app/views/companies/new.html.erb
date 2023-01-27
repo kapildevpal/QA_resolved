@@ -4,9 +4,9 @@
      <div class="card-body">
      <h2 class="card-title">Company </h2>
  
-<%= form_with model: @company do |form| %>
+<%= bootstrap_form_with model: @company do |form| %>
   <div>
-    <%= form.label :name %><br>
+    
     <%= form.text_field :name %>
     <% @company.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
@@ -14,15 +14,15 @@
   </div>
 
   <div>
-    <%= form.label :address %><br>
-    <%= form.text_area :address %><br>
+  
+    <%= form.text_area :address  %><br>
     <% @company.errors.full_messages_for(:address).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
-  <%= form.label :No_of_employees %><br>
+ 
   <%= form.text_field :no_of_employee %>
   <% @company.errors.full_messages_for(:no_of_employees).each do |message| %>
     <div><%= message %></div>
@@ -30,7 +30,7 @@
 </div>
 
   <div>
-  <%= form.label :image %><br>
+ 
       <%= form.file_field :image, class: "col-auto", required: true %><br>
   </div>
 

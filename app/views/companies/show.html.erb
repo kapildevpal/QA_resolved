@@ -1,21 +1,29 @@
- 
-            <%if current_user.role == "admin"%>
-            <%=link_to 'Create New Company', new_company_path %>
-             <%end%>   
-       <hr/>
 
-      
-   <div class="container">
-      <div class="row">
+     
+   <div class="container" >
+      <div class="row ">
           <div class="col-6 col-lg-6 background">
             <p class="p-style">
             
-  
-     <%=image_tag(@company.image, style: 'width:500px')%> 
+            <div class="card" style="width: 28rem;">
+    
+
+             <ul><%=image_tag(@company.image, style: 'width:200px')%> </ul></p>
        
 
-        <ul><%= @company.name %> </ul>
-     <ul><%= @company.address %></ul> 
+       <h5 class="card-title">
+       <ul><%= @company.name %> </ul></h5>
+     <b class="card-text"><ul><%= @company.address %></ul> </b>
+
+         <ul> <%new=Comment.all.where(company_id:@company.id)%>
+<%all_ratings=new.pluck(:rating)%>
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16">
+  <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z"/>
+</svg><%=all_ratings.compact.sum/1+all_ratings.size%></ul>
+
       
         <%if current_user.role == "admin"%>
          
@@ -28,41 +36,53 @@
                        } %> </ul>
       
                <%end%></p>
+          </div>
+
+
+
     </div>
-    <div class="col-6 col-lg-6 background2">
-      <p class="p-style">
-      <h5>Comments</h5>
 
-      <%= render 'comments/form' %>
+    <div class="card" style='height:0%; width:50%;'>
 
-   <%# Comment load more %>
+            
+              <p class="p-style">
+             <ul> <h5>Comments</h5></ul>
 
-   <script type="text/javascript">
-   function showDiv(toggle){
-   document.getElementById(toggle).style.display = 'block';
-   }
-   </script>
+              <%= render 'comments/form' %>
+                
+               
 
-   <% if @company.comments.count > 4%>
-         <%= render @company.comments.last(3) %>
-   <%end%>
-       <%# Comments %>
-         <button onclick="myFunction()">see all comments</button>
-         
-
-         <script>
-         function myFunction() {
-           var x = document.getElementById("myDIV");
-           if (x.style.display === "none") {
-             x.style.display = "block";
-           } else {
-             x.style.display = "none";
-           }
-         }
-         </script>
-         <div id="myDIV">
-         <%= render @company.comments.all %>
-         </div></p>
-    </div>
   </div>
-</div>
+        </div>
+     </div>              
+
+            <%# Comment load more %>  
+
+
+               <script type="text/javascript">
+               function showDiv(toggle){
+               document.getElementById(toggle).style.display = 'block';
+               }
+               </script>
+
+               <% if @company.comments.count > 4%>
+                     <%= render @company.comments.last(3) %>
+               <%end%>
+                   <%# Comments %>
+                     <button class="btn btn-primary btn-sm" onclick="myFunction()">see all comments</button>
+
+
+                     <script>
+                     function myFunction() {
+                       var x = document.getElementById("myDIV");
+                       if (x.style.display === "none") {
+                         x.style.display = "block";
+                       } else {
+                         x.style.display = "none";
+                       }
+                     }
+                     </script>
+                     <div id="myDIV">
+                        <%= render @company.comments.all %>
+                     </div></p>
+         

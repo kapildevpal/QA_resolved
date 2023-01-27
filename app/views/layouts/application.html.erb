@@ -13,16 +13,12 @@
   </head>
 
   <body>
+      <%= render partial: "shared/navbar"%>
 
-      <%if user_signed_in? %>
-      <%="You are signed in as:"%>
-      <%= current_user.email%>
-        <%=link_to 'Sign_out', destroy_user_session_path %>
-
-      <%else%>
+ 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <%end%>
+      
     <%= yield %>
     
   </body>

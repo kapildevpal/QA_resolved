@@ -1,5 +1,5 @@
 <hr/>
-<h1>EmpCompanies</h1>
+<p class="text-center fs-1">Employee Company<p>
 
 
 
@@ -7,10 +7,12 @@
 
  <% @companies.each do |comp| %>
     <li>
+
+    <div class="card" style="width: 18rem;">
     <%if current_user.company_name == comp.name%>   
-      <%= link_to comp.name, comp %>
+   <button type="button" class="btn btn-dark">   <%= link_to comp.name, comp %></button>
      
-      
+      </div>
     <%end%>
     </li>
    

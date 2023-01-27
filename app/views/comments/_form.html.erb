@@ -1,18 +1,27 @@
- <div>
- <%= form_with model: [ @company, @company.comments.build ] do |form| %>
+<div class="d-flex align-items-right justify-content-right" style="height: 90vh">
+  <div class="card" style="width: 200rem;" >
+    <div class="card border-dark shadow-sm">
+     <div class="card-body">
+ <%= bootstrap_form_for [ @company, @company.comments.build ] do |form| %>
  
   <%if user_signed_in?%>
     <%= form.hidden_field :title, value: current_user.email %>
   <%end%> 
-<ul> 
-
-<%= form.text_field :rating, required: true,:size => 1, :min => 0, :max => 5, :step => 1 %>
-<div class="rateit" data-rateit-backingfld="#item_ratings" data-rateit-resetable="true">
-</div>
-
-
-  <ul> <%= form.label :Comment %></ul> 
-   <ul><%= form.text_area :comment %>  <%= form.submit %></ul>
+   
+  <%= form.select :rating, [1,2,3,4,5]  %> 
+   <%= form.text_area :comment %> 
+ 
     
-<%end%><br>
+   <ul>  <%= form.submit %></ul>
+  
+<%end%> 
 </div>
+
+ 
+
+
+
+
+
+
+ 
