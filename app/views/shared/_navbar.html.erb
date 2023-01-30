@@ -10,12 +10,12 @@
       
         <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
       </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="/companies/new">New Comapny</a>
-      </li>
-      
 
+      <%if current_user&.role =='admin'%>
+    <a class="nav-link" href="/companies/new">New Comapny</a>
+          </li>
+      <%end%>
+ 
         <%if user_signed_in?%>
      
 
@@ -39,8 +39,14 @@
         <a class="nav-link" href="/users/sign_in">Sign in <span class="sr-only"></span></a>
       </li>
       <%end%>
+      
+      </li>
     </ul>
      
+
+
+
+
   </div>
 </nav>
 

@@ -3,7 +3,7 @@
     <div class="card border-dark shadow-sm">
      <div class="card-body">
      <h2 class="card-title">Update </h2>
-<%= form_with model: @company do |form| %>
+<%= form_with model: @company , data: { turbo: false }do |form| %>
   <div>
     <%= form.label :name %><br>
     <%= form.text_field :name %>

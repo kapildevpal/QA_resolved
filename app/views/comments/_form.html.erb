@@ -1,5 +1,5 @@
-<div class="d-flex align-items-right justify-content-right" style="height: 90vh">
-  <div class="card" style="width: 200rem;" >
+<div class="d-flex align-items-right justify-content-right" style="height: 50vh">
+  <div class="card" style="width: 100rem;" >
     <div class="card border-dark shadow-sm">
      <div class="card-body">
  <%= bootstrap_form_for [ @company, @company.comments.build ] do |form| %>
@@ -9,6 +9,7 @@
   <%end%> 
    
   <%= form.select :rating, [1,2,3,4,5]  %> 
+  
    <%= form.text_area :comment %> 
  
     

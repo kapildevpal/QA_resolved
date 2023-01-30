@@ -1,6 +1,6 @@
 
      
-   <div class="container" >
+   <div class="container align=center"  >
       <div class="row ">
           <div class="col-6 col-lg-6 background">
             <p class="p-style">
@@ -15,20 +15,27 @@
        <ul><%= @company.name %> </ul></h5>
      <b class="card-text"><ul><%= @company.address %></ul> </b>
 
-         <ul> <%new=Comment.all.where(company_id:@company.id)%>
+
+<%# Exeption%>
+
+<%begin%>
+ <ul> <%new=Comment.all.where(company_id:@company.id)%>
 <%all_ratings=new.pluck(:rating)%>
+ 
+
+<%star_to_display=all_ratings.compact.sum/all_ratings.size%>
+<%star_to_display.times do%>
+    <span>&#11088;</span> 
+<%end%>
 
 
+</ul>
+<%rescue%>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16">
-  <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z"/>
-</svg><%=all_ratings.compact.sum/1+all_ratings.size%></ul>
 
+<%end%>
       
         <%if current_user.role == "admin"%>
-         
-      
-
         <ul><%= link_to "Update", edit_company_path(@company) %> </ul>
         <ul> <%= link_to "Destroy", company_path(@company), data: {
                          turbo_method: :delete,
@@ -55,34 +62,36 @@
   </div>
         </div>
      </div>              
-
-            <%# Comment load more %>  
-
-
-               <script type="text/javascript">
-               function showDiv(toggle){
-               document.getElementById(toggle).style.display = 'block';
-               }
-               </script>
-
-               <% if @company.comments.count > 4%>
-                     <%= render @company.comments.last(3) %>
+ 
+    
+   
+ <% if @company.comments.count > 2%>
+                  <%= render @company.comments.last(3) %>
                <%end%>
-                   <%# Comments %>
-                     <button class="btn btn-primary btn-sm" onclick="myFunction()">see all comments</button>
+
+<div id="div1">
+<p style="color:blue;" onclick="showFunction('div2','div1')">show all comment</p></div>
+<div id="div2" style="display:none">
+
+<p><%= render @company.comments.all %></p>
+
+<p style="color:red;" onclick="showFunction('div1','div2')">show less</p></div>
+ 
+ 
 
 
-                     <script>
-                     function myFunction() {
-                       var x = document.getElementById("myDIV");
-                       if (x.style.display === "none") {
-                         x.style.display = "block";
-                       } else {
-                         x.style.display = "none";
-                       }
-                     }
-                     </script>
-                     <div id="myDIV">
-                        <%= render @company.comments.all %>
-                     </div></p>
-         
+
+ <script>
+function showFunction(diva, divb) {
+    var x = document.getElementById(diva);
+    var y = document.getElementById(divb);
+          x.style.display = 'block';
+          y.style.display = 'none';
+}
+</script>
+
+
+
+
+
+ 

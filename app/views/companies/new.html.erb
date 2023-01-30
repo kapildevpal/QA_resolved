@@ -1,36 +1,31 @@
-<div class="d-flex align-items-center justify-content-center" style="height: 90vh">
+<div class="d-flex align-items-center justify-content-center" style="height: 70vh">
   <div class="card" style="width: 20rem;" >
     <div class="card border-dark shadow-sm">
      <div class="card-body">
      <h2 class="card-title">Company </h2>
  
-<%= bootstrap_form_with model: @company do |form| %>
+<%= bootstrap_form_with model: @company, data: { turbo: false } do |form| %>
   <div>
-    
+   
     <%= form.text_field :name %>
-    <% @company.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+  
+   
   </div>
 
   <div>
   
     <%= form.text_area :address  %><br>
-    <% @company.errors.full_messages_for(:address).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+   
   </div>
 
   <div>
  
   <%= form.text_field :no_of_employee %>
-  <% @company.errors.full_messages_for(:no_of_employees).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
+ 
 </div>
 
   <div>
- 
+
       <%= form.file_field :image, class: "col-auto", required: true %><br>
   </div>
 
