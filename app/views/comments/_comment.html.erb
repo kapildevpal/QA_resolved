@@ -1,13 +1,19 @@
 <div><p>
+ <span>
+    Commenter:
+   <b> <%= comment.title %></b>
+  </span><br>
+
+  <%use = comment.user%>
+ 
+   <% if current_user&.avatar =='nil'%>
+   <%else%>
+  <%= image_tag(use.avatar,style:"width:50px;height:50px")%>
+   <%end%>
   <span>
       Comment:
-    <%= comment.comment%>
+     <%= comment.comment%> 
   </span></p>
-  <br>
- <span>
-    Commenter Email:
-    <%= comment.title %>
-  </span>
 
   </div>
 

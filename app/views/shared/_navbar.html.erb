@@ -44,8 +44,14 @@
     </ul>
      
 
-
-
+      
+<li class="nav-item">
+<%if user_signed_in?%>
+  <%= image_tag(current_user.avatar,style:"width:50px;height:50px")%>
+<%else%>
+  <%= image_tag image_url("defa.png",style:"width:10%")%>
+<%end%>
+</li>
 
   </div>
 </nav>

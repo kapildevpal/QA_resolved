@@ -9,5 +9,9 @@ class User < ApplicationRecord
 
   validates :role, presence: true
   
+  has_one_attached :avatar 
+
+
+
 end
 

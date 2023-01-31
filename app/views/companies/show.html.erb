@@ -1,6 +1,4 @@
-
-     
-   <div class="container align=center"  >
+      <div class="container align=center"  >
       <div class="row ">
           <div class="col-6 col-lg-6 background">
             <p class="p-style">
@@ -47,24 +45,16 @@
 
 
 
-    </div>
+        </div>
 
-    <div class="card" style='height:0%; width:50%;'>
+            <div class="card" style='height:0%; width:50%;'>
+                      <p class="p-style">
+                     <ul> <h5>Comments</h5></ul>
 
-            
-              <p class="p-style">
-             <ul> <h5>Comments</h5></ul>
-
-              <%= render 'comments/form' %>
-                
-               
-
-  </div>
+                      <%= render 'comments/form' %>
+             </div>
         </div>
      </div>              
- 
-    
-   
  <% if @company.comments.count > 2%>
                   <%= render @company.comments.last(3) %>
                <%end%>
@@ -89,7 +79,6 @@ function showFunction(diva, divb) {
           y.style.display = 'none';
 }
 </script>
-
 
 
 

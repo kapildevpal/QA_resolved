@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
 
   def create
     @company = Company.find(params[:company_id])
-
     @comment = @company.comments.new(comment_params.merge(user_id: current_user.id))
     respond_to do |format|
       if @comment.save
