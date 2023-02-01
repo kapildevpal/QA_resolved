@@ -3,19 +3,19 @@
 
 
 
-<ul>
+  <p>
 
  <% @companies.each do |comp| %>
-    <li>
+  
 
     <div class="card" style="width: 18rem;">
     <%if current_user.company_name == comp.name%>   
    <button type="button" class="btn btn-dark">   <%= link_to comp.name, comp %></button>
-     
+     </p> 
       </div>
+     
     <%end%>
-    </li>
-   
-
+     
+ 
   <%end%>
 

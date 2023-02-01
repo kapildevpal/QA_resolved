@@ -1,0 +1,6 @@
+<h1>Jobs#new</h1>
+<p>Find me in app/views/jobs/new.html.erb</p>
+ <%=form_for model: @job do |form| %> 
+  <%= form.text_field :job_title %>
+   <%= form.submit "submit" , data: { turbo: false }%>
+<% end %>

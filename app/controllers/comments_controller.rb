@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
     @comment = @company.comments.new(comment_params.merge(user_id: current_user.id))
     respond_to do |format|
       if @comment.save
+        @user = @company.user
+        UserMailer.comment_email(@user).deliver_now
         redirect_to @company, notice: 'Comment was successfully created.'
 
       end

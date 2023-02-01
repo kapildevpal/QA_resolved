@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    
   get 'emp_companies/index'
   devise_for :users
   devise_scope :user do  
@@ -11,10 +12,11 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # get '/register', to: 'users#new'
- 
+  
   # Defines the root path route ("/")
   resources :companies do
   resources :comments
+  resources :jobs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

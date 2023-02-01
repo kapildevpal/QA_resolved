@@ -55,10 +55,9 @@
              </div>
         </div>
      </div>              
- <% if @company.comments.count > 2%>
-                  <%= render @company.comments.last(3) %>
-               <%end%>
-
+ 
+   <%= render @company.comments.first(3) %>
+               
 <div id="div1">
 <p style="color:blue;" onclick="showFunction('div2','div1')">show all comment</p></div>
 <div id="div2" style="display:none">
