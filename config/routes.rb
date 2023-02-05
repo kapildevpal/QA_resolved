@@ -14,13 +14,52 @@ Rails.application.routes.draw do
   # get '/register', to: 'users#new'
   
   # Defines the root path route ("/")
-  resources :companies do
-  resources :comments
-  resources :jobs
+  # resources :companies do
+  # resources :comments
+  # resources :jobs
+  # 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-end
+# end
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :companies do
+    resources :comments
+    resources :jobs do  
+      # resources :applications, only: [:create]
+    resources :questions do
+      resources :answers, only: [:show]
+    end
+
+    end
+  end
+  post '/companies/:company_id/jobs/:job_id/questions', to: 'questions#create', as: 'job_questions'
+ 
+  resources :users do
+    resources :comments
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+# resources :jobs do
+  # get :new_posting, on: :collection
+  # post :create_posting, on: :collection
+# end
+# 
+# resources :applications do
+  # get :new_submission, on: :collection
+  # post :create_submission, on: :collection
+# end
+# 

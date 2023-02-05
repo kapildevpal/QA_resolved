@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!, :only => [:edit ,:destroy ,:new]
+  # before_action :set_company, only: [:show, :apply]
 
   def index
     @companies = Company.all
@@ -46,6 +47,22 @@ class CompaniesController < ApplicationController
     @company.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  def apply
+    @company = Company.find(params[:id])
+
+    if current_user.admin? && @company.user == current_user
+      @company.approved = true
+      @company.save
+      redirect_to @company, notice: 'Successfully approved the company.'
+    elsif @company.user == current_user
+      @company.approved = false
+      @company.save
+      redirect_to @company, alert: 'Your request for approval is pending.'
+    else
+      redirect_to @company, alert: 'You are not authorized to apply for this company.'
+    end
   end
 
   private

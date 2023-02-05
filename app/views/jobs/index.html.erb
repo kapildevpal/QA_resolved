@@ -1,5 +1,28 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
-<%@jobs.each do |job|%>
-<%=job.job_title%>
-<%end%>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job Title</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.job_title %></td>
+        <td><%= link_to 'Show', company_job_path(job.company, job) %></td>
+<td><%= link_to 'Edit', edit_company_job_path(job.company, job)  %></td>
+
+
+
+        <td><%= link_to 'Destroy', company_job_path(job.company,job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job', new_company_job_path %>

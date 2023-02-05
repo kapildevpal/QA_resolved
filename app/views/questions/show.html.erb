@@ -1,0 +1,38 @@
+<h1>All Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Job</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+       <tr> 
+      </tr>
+    <%   %>
+  </tbody>
+</table>
+
+
+# app/views/questions/show.html.erb
+
+ 
+<h2>Answers:</h2>
+<ul>
+  <% @question.answers.each do |answer| %>
+    <li><%= answer.content %></li>
+  <% end %>
+</ul>
+
+<h2>Add a new answer:</h2>
+<%= form_for [@question, @question.answers.build] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+
+
+ 

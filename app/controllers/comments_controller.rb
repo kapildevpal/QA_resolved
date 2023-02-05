@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
-
+  helper_method :current_company
   def show
     @comments = Comment.all
   end
@@ -19,6 +19,9 @@ class CommentsController < ApplicationController
   end
 
   private
+  def current_company
+    @company = Company.find(params[:company_id])
+   end
 
   def comment_params
     params.require(:comment).permit(:title, :comment, :rating)
