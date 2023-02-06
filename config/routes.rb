@@ -19,24 +19,22 @@ Rails.application.routes.draw do
   # resources :jobs
   # 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  resources :questions do
+    resources :answers
+        end
   # Defines the root path route ("/")
 # end
   # Defines the root path route ("/")
   # root "articles#index"
-
+  post '/companies/:question_id/answers', to: 'answers#create'
   resources :companies do
     resources :comments
-    resources :jobs do  
-      # resources :applications, only: [:create]
-    resources :questions do
-      resources :answers, only: [:show]
-    end
-
-    end
+  resources :jobs do  
+    resources :questions  
+      end
   end
-  post '/companies/:company_id/jobs/:job_id/questions', to: 'questions#create', as: 'job_questions'
- 
+  # post '/companies/:company_id/jobs/:job_id/questions', to: 'questions#create', as: 'job_questions'
+
   resources :users do
     resources :comments
   end

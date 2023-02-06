@@ -1,1 +1,25 @@
+<%# <%= form_with(model: [@question, @answer], local: true) do |form| %> 
+
+<h2>Add a new answer:</h2>
+
+<%byebug%>
+ <%= bootstrap_form_for [ @question, @question.answers.build ] do |form|%>
+ <%# <%= bootstrap_form_with model: @answer, url: company_job_question_answers_path(@question) do |f| %> 
+ <%= f.hidden_field :question_id, value: @question.id %>
+   <%byebug%>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+
+<h2>Add a new answer:</h2>
+
  
+<%= bootstrap_form_for([question, @answers] , company_job_question_answers_path(@question),method::post) do |f| %>
+
+    <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+ <% end %>

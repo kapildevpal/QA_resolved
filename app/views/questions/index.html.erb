@@ -1,19 +1,32 @@
 <h1>All index Questions</h1>
+  <h1>All Questions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Job</th>
-      <th>Company</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.content %></td>
-         
+  
+
+ 
+<% @question.each do |question| %>
+      <tr><span>question</span>
+ <td><h4> <%= link_to question.content  %> </h4></td>
+
       </tr>
-    <% end %>
-  </tbody>
-</table>
+  
+ 
+<h2>Answers:</h2>
+<ul>
+  <% question.answers.each do |answer| %>
+    <li><%= answer.content %></li>
+
+
+
+
+
+
+  <% end %>
+</ul><% end %>
+ 
+
+
+ 
+
+
+ 

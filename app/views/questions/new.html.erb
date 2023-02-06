@@ -1,6 +1,6 @@
 <h1>New Question</h1>
 
-<%= form_with model: @question, url: job_questions_path(@job) do |form| %>
+<%= form_with model: @question, url: company_job_questions_path(@job) do |form| %>
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>

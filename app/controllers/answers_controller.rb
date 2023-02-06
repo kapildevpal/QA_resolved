@@ -1,9 +1,10 @@
 class AnswersController < ApplicationController
-  # answers_controller.rb
-def create
-  @question = Question.find(params[:question_id])
-  @answer = @question.answers.build(answer_params)
 
+def create
+  
+    @question = Question.find(params[:question_id])
+  @answer = @question.answers.build(answer_params)
+byebug
   if @answer.save
     redirect_to company_job_question_path(@question.job.company, @question.job, @question)
   else

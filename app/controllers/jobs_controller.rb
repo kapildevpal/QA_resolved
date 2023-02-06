@@ -5,12 +5,13 @@ class JobsController < ApplicationController
     
     @jobs = current_company.jobs
 
-    @jobs = Job.all
-    
+     
   end
 
   def show
     @job = Job.find(params[:id])
+    @questions = @job.questions
+    @company=current_company.id
     # @application = @job.applications.build(users_id: current_user)
 
 

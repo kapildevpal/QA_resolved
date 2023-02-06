@@ -41,10 +41,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_05_125321) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
-    t.integer "job_id", null: false
+    t.integer "question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_answers_on_job_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "applications", force: :cascade do |t|
@@ -110,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_05_125321) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "answers", "jobs"
+  add_foreign_key "answers", "questions"
   add_foreign_key "applications", "jobs", column: "jobs_id"
   add_foreign_key "applications", "users", column: "users_id"
   add_foreign_key "comments", "companies"
