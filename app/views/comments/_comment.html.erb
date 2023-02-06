@@ -3,12 +3,17 @@
     Commenter:
    <b> <%= comment.title %></b>
   </span><br>
-
-   
-  <span>
-      Comment:
-     <%= comment.comment%> 
-  </span></p>
+  <% use = comment.user %>
+  <% if use.nil? || use.avatar.nil? %>
+    <!-- Default image goes here -->
+  <% else %>
+    <%= image_tag(use.avatar,style:"width:150px;height:150px") %>
+  <% end %>
+  
+ <span>
+     Comment:
+    <%= comment.comment%> 
+ </span></p>
 
   </div>
 

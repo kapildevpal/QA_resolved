@@ -1,7 +1,85 @@
- <div><p>
- <span>
-    answer:
-   <b> <%= answer.content %></b>
-  </span><br>
+<h1>All index Questions</h1>
+ 
+  <h1>Questions:</h1>
+  <ul>
+    <% @question.each do |question| %>
+      <li>
+        <%= question.content %>
 
-    
+        
+        <br><br>
+        <% if question.answers.any? %>
+          <b>Answers:</b>
+          <ul>
+            <% question.answers.each do |answer| %>
+              <li><%= answer.content %></li>
+            
+            </div>
+            <% end %>
+            <%= form_for [question, Answer.new] do |f| %>
+              <%= f.text_area :content %>
+
+              <%= f.submit "Submit Answer" %>
+            <% end %>
+          </ul>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<script>
+document.querySelector('.toggle-answer-form-button').addEventListener('click', function() {
+  document.querySelector('.answer-form-container').style.display = 'block';
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+ 
+
+
+ 

@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   
   def new
     @job = Job.find(params[:job_id])
-    @question = Question.new
+    @questions = Question.new
     
   end
   def show

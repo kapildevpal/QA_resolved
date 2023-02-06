@@ -19,9 +19,7 @@ Rails.application.routes.draw do
   # resources :jobs
   # 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :questions do
-    resources :answers
-        end
+  
   # Defines the root path route ("/")
 # end
   # Defines the root path route ("/")
@@ -30,9 +28,17 @@ Rails.application.routes.draw do
   resources :companies do
     resources :comments
   resources :jobs do  
-    resources :questions  
+    resources :questions  do
+      resources :answers
+          end 
       end
   end
+
+
+  resources :questions do
+    resources :answers
+  end
+  
   # post '/companies/:company_id/jobs/:job_id/questions', to: 'questions#create', as: 'job_questions'
 
   resources :users do

@@ -47,7 +47,7 @@
       <%else%>
         <a class="nav-link" href="/users/sign_in">Sign in <span class="sr-only"></span></a>
       </li>
-      <%end%>
+     <%end%>
       
       </li>
     </ul>
@@ -56,13 +56,18 @@
 
     
 
-      
-<li class="nav-item">
- 
- <%# <%= image_tag(current_user.avatar) %> 
 
- 
-</li>
+      
+    <li class="nav-item">
+    <%if user_signed_in?%>
+      <%= image_tag(current_user.avatar,style:"width:50px;height:50px")%>
+    <%else%>
+    <%= image_tag("defa.png", style: "width:50px;height:50px") %>
+
+
+    <%end%>
+    </li>
+    
 
   </div>
 </nav>
