@@ -22,13 +22,10 @@ class JobsController < ApplicationController
   end
 
   def create
-    
     @job = Job.new(job_params)
-    
     @job.company = current_company
-    
     if @job.save
-      redirect_to @job.company, notice: "Job posting was successfully created."
+      redirect_to company_jobs_url, notice: "Job posting was successfully created."
     else
       render :new
     end
@@ -42,7 +39,7 @@ class JobsController < ApplicationController
   def update
     
     if @job.update(job_params)
-      redirect_to [@job.company, @job], notice: "Job posting was successfully updated."
+      redirect_to company_jobs_url, notice: "Job posting was successfully updated."
     else
       render :edit
     end

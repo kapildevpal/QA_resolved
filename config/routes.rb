@@ -34,10 +34,11 @@ Rails.application.routes.draw do
       end
   end
 
-
+   
   resources :questions do
     resources :answers
-  end
+   
+end
   
   # post '/companies/:company_id/jobs/:job_id/questions', to: 'questions#create', as: 'job_questions'
 

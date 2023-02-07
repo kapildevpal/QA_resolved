@@ -23,3 +23,36 @@
   <%= f.text_area :content %>
   <%= f.submit %>
  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+   <% if question.answers.any? %>
+                <b>Answers:</b>
+                <ul>
+                  <% question.answers.each do |answer| %>
+                    <li><%= answer.content %></li>
+                  <% end %>
+        <%else%>          
+                </ul>
+                <div class="answer-form-container" style="display:none;">
+                  <%= form_for [@question, Answer.new] do |f| %>
+                    <%= f.text_area :content %>
+                    <%= f.submit "Submit Answer" %>
+                  <% end %>
+                </div>
+                <button class="toggle-answer-form-button">Add Answer</button>
+
+
+  <%=render "answers/answer"%>
+  </div>
+
+<% end %>

@@ -1,22 +1,7 @@
 <h1>Edit Job</h1>
+<%= bootstrap_form_for([@company, @job], url: company_job_path(@company, @job)) do |f| %>
 
-<%= form_for([@company, @job], url: company_job_path(@company, @job)) do |f| %>
-
-
-  <% if @job.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
-
-      <ul>
-        <% @job.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :job_title %>
+ 
     <%= f.text_field :job_title %>
   </div>
 

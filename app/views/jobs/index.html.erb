@@ -1,23 +1,19 @@
-
-<table>
-   
-    
+<%= link_to 'New Job', new_company_job_path %><hr/>
  
-  <tbody>
+ 
     <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.job_title %></td>
-        <td><%= link_to 'Show', company_job_path(job.company, job) %></td>
-<td><%= link_to 'Edit', edit_company_job_path(job.company, job)  %></td>
+         <div class="container p-5 my-5 bg-light border">
+
+       <> <h1><%= link_to  job.job_title , company_job_path(job.company, job) %></h1>
+        
+<li><%= link_to 'Edit', edit_company_job_path(job.company, job)  %></li>
 
 
 
-        <td><%= link_to 'Destroy', company_job_path(job.company,job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <li><%= link_to 'Destroy', company_job_path(job.company,job), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </tr></div>
     <% end %>
-  </tbody>
-</table>
-
+ 
 <br>
 
-<%= link_to 'New Job', new_company_job_path %>
+ 

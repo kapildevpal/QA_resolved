@@ -1,7 +1,6 @@
-<%= link_to "jobs", company_jobs_path(@company) %>
 
-
-<div class="container align=center"  >
+ <div class="container align=center-top"  >
+ 
       <div class="row ">
           <div class="col-6 col-lg-6 background">
             <p class="p-style">
@@ -16,7 +15,10 @@
        <ul><%= @company.name %> </ul></h5>
      <b class="card-text"><ul><%= @company.address %></ul> </b>
 
-
+<div class="text-center">
+ <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="popover" title="See jobs" data-bs-content="And here's some amazing content. It's very engaging. Right?"><%= link_to "jobs", company_jobs_path(@company) %>
+</button>
+</div>
 <%# Exeption%>
 
 <%begin%>
@@ -53,6 +55,7 @@
             <div class="card" style='height:0%; width:50%;'>
                       <p class="p-style">
                      <ul> <h5>Comments</h5></ul>
+                     
 
                       <%= render 'comments/form' %>
              </div>

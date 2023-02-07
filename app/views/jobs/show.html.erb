@@ -1,15 +1,27 @@
- 
-<p>
-<strong>Job Title:</strong>
-<%= @job.job_title %>
-</p>
-
- 
-
+ <div class="row">
+       <div class="col-5 border border-primary">
+                  
 <%= link_to 'Edit', edit_company_job_path %> 
  
 <%= link_to 'See Questions', company_job_questions_path(@company,@job) %> 
-  
+  <br>
 
-
+<%= link_to 'Create New Question',new_company_job_question_path(@company,@job) %>
 <%# <%= render 'questions/show' %>   %>
+
+<br>
+<%= link_to 'See all jobs', company_jobs_path%><br>
+
+<strong>Job Title:</strong>
+<%= @job.job_title %>
+ 
+ </div> 
+
+
+ 
+<div class="col">
+<div class="container">
+ 
+  <%= render 'questions/index' %>
+</div>  
+</div>  
